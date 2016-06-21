@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>
+    gem的使用
+    <% if content_for?(:title) %>
+        <%= yield :title %>
+    <% end %>
+  </title>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+<% if notice %>
+<p calss="alert alert-success"><%= notice %></p>
+<% end %>
+<% if alert %>
+<p calss="alert alert-danger"><%= alert %></p>
+<% end %>
+
+<% if user_signed_in? %>
+  logged in as <em><%= current_user.email %></em>
+  <%= link_to 'Edit profile', edit_user_registration_path %> |
+  <%= link_to 'Logout', destroy_user_session_path, :method => :delete %>
+<% else %>
+  <%= link_to "Sign up", new_user_registration_path %> |
+  <%= link_to "Login", new_user_session_path %>
+<% end %>
+
+
+<%= yield %>
+
+</body>
+</html>

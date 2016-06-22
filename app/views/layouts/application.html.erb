@@ -19,7 +19,7 @@
 <p calss="alert alert-danger"><%= alert %></p>
 <% end %>
 
-<% if user_signed_in? %>
+<% if user_signed_in? || admin_user_signed_in? %>
   logged in as <em><%= current_user.email %></em>
   <%= link_to 'Edit profile', edit_user_registration_path %> |
   <%= link_to 'Logout', destroy_user_session_path, :method => :delete %>
